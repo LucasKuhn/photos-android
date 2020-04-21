@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.example.photos.model.Photo;
 
+import java.util.ArrayList;
+
 public class BDSQLiteHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -51,7 +53,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public String getImage(int id) {
+    public Photo getPhoto(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME,
                 null, // columns filter ( null to return all )
@@ -66,8 +68,31 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
             return null;
         } else {
             cursor.moveToFirst();
-            return cursor.getString(2);
+            return cursorToPhoto(cursor);
         }
+    }
+
+    private Photo cursorToPhoto(Cursor cursor) {
+        Photo photo = new Photo();
+        photo.setId(Integer.parseInt(cursor.getString(0)));
+        photo.setTitle(cursor.getString(1));
+        photo.setDescription(cursor.getString(2));
+        photo.setUrl(cursor.getString(3));
+        return photo;
+    }
+
+    public ArrayList<Photo> getAllPhotos() {
+        ArrayList<Photo> photoList = new ArrayList<Photo>();
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + ID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Photo photo = cursorToPhoto(cursor);
+                photoList.add(photo);
+            } while (cursor.moveToNext());
+        }
+        return photoList;
     }
 
 }

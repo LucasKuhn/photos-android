@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private final int CAMERA = 3;
 
     private File filePhoto = null;
-    ArrayList<String> photoList;
+    ArrayList<Photo> photoList;
 
     private RecyclerView recyclerView;
 
@@ -84,9 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        photoList = new ArrayList<String>();
-        photoList.add("Foto 1");
-        photoList.add("Foto 2");
+        photoList = database.getAllPhotos();
 
         PhotosAdapter adapter = new PhotosAdapter(photoList, this);
         recyclerView.setAdapter(adapter);
@@ -102,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
                     Uri.fromFile(filePhoto))
             );
             String photoURL = filePhoto.getAbsolutePath();
-            Photo photo = new Photo("Titulo tal", "Descrição tal", photoURL);
-            int imageId = database.addPhoto(photo);
-            Toast.makeText(getApplicationContext() , "Photo added with id " + imageId , Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, NewPhotoActivity.class);
+            intent.putExtra("photoURL", photoURL);
+            startActivity(intent);
         }
     }
 
