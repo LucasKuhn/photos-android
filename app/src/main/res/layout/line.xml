@@ -13,5 +13,13 @@
         android:textStyle="bold"
         android:textColor="#000"
         android:text="Nome" />
+
+    <TextView
+        android:id="@+id/txtUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="Url" />
 </LinearLayout>
 

@@ -18,9 +18,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.photos.R;
 import com.example.photos.adapter.PhotosAdapter;
+import com.example.photos.db.BDSQLiteHelper;
 import com.example.photos.model.Photo;
 
 import java.io.File;
@@ -39,11 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private BDSQLiteHelper database;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        database = new BDSQLiteHelper(this);
         recyclerView = findViewById(R.id.rvPhotos);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -58,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission. WRITE_EXTERNAL_STORAGE },
+                        PERMISSION_REQUEST);
+            }
+        }
+
+        // Asks permission to read files on the device
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         PERMISSION_REQUEST);
             }
         }
@@ -82,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent. ACTION_MEDIA_SCANNER_SCAN_FILE ,
                     Uri.fromFile(filePhoto))
             );
+            String photoURL = filePhoto.getAbsolutePath();
+            Photo photo = new Photo("Titulo tal", "Descrição tal", photoURL);
+            int imageId = database.addPhoto(photo);
+            Toast.makeText(getApplicationContext() , "Photo added with id " + imageId , Toast.LENGTH_LONG).show();
         }
     }
 
