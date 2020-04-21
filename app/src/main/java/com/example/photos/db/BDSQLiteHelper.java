@@ -95,4 +95,27 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
         return photoList;
     }
 
+    public int updatePhoto(Photo photo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TITLE, photo.getTitle());
+        values.put(DESCRIPTION, photo.getDescription());
+        values.put(URL, photo.getUrl());
+        int i = db.update(TABLE_NAME,
+                values,
+                ID + " = ?",
+                new String[] { String.valueOf(photo.getId()) });
+        db.close();
+        return i;
+    }
+
+    public int deletePhoto(Photo photo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int i = db.delete(TABLE_NAME,
+                ID+" = ?",
+                new String[] { String.valueOf(photo.getId()) });
+        db.close();
+        return i;
+    }
+
 }
