@@ -2,16 +2,16 @@ package com.example.photos.model;
 
 public class Photo {
     private int id;
-    private String titulo;
-    private String descricao;
+    private String title;
+    private String description;
     private String url;
 
     public Photo() {}
 
-    public Photo(String titulo, String descricao, String url) {
+    public Photo(String title, String description, String url) {
         super();
-        this.titulo = titulo;
-        this.descricao = descricao;
+        this.title = title;
+        this.description = description;
         this.url = url;
     }
 
@@ -23,20 +23,20 @@ public class Photo {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getUrl() {

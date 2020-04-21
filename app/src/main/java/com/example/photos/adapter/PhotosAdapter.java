@@ -1,10 +1,12 @@
 package com.example.photos.adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +20,10 @@ import java.util.List;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
 
-    private final List<String> elements;
+    private final List<Photo> elements;
     Context context;
 
-    public PhotosAdapter(List<String> elements, Context context) {
+    public PhotosAdapter(List<Photo> elements, Context context) {
         this.elements = elements;
         this.context = context;
     }
@@ -45,16 +47,23 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView txtName;
+        private TextView txtTitle;
+        private TextView txtDescription;
+        private ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            txtName = itemView.findViewById(R.id.txtName);
+            txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtDescription  = itemView.findViewById(R.id.txtDescription);
+            imageView  = itemView.findViewById(R.id.reciclerImageView);
         }
 
-        private void setData(String name) {
-            txtName.setText(name);
+        private void setData(Photo photo) {
+            txtTitle.setText(photo.getTitle());
+            txtDescription.setText(photo.getDescription());
+            Bitmap bitmap = BitmapFactory.decodeFile(photo.getUrl());
+            imageView.setImageBitmap(bitmap);
         }
 
         public void onClick(View view) {

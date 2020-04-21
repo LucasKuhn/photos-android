@@ -18,9 +18,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.photos.R;
 import com.example.photos.adapter.PhotosAdapter;
+import com.example.photos.db.BDSQLiteHelper;
 import com.example.photos.model.Photo;
 
 import java.io.File;
@@ -35,15 +37,19 @@ public class MainActivity extends AppCompatActivity {
     private final int CAMERA = 3;
 
     private File filePhoto = null;
-    ArrayList<String> photoList;
+    ArrayList<Photo> photoList;
 
     private RecyclerView recyclerView;
+
+    private BDSQLiteHelper database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        database = new BDSQLiteHelper(this);
         recyclerView = findViewById(R.id.rvPhotos);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -61,13 +67,24 @@ public class MainActivity extends AppCompatActivity {
                         PERMISSION_REQUEST);
             }
         }
+
+        // Asks permission to read files on the device
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST);
+            }
+        }
     }
 
     protected void onStart() {
         super.onStart();
-        photoList = new ArrayList<String>();
-        photoList.add("Foto 1");
-        photoList.add("Foto 2");
+        photoList = database.getAllPhotos();
 
         PhotosAdapter adapter = new PhotosAdapter(photoList, this);
         recyclerView.setAdapter(adapter);
@@ -82,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent. ACTION_MEDIA_SCANNER_SCAN_FILE ,
                     Uri.fromFile(filePhoto))
             );
+            String photoURL = filePhoto.getAbsolutePath();
+            Intent intent = new Intent(MainActivity.this, NewPhotoActivity.class);
+            intent.putExtra("photoURL", photoURL);
+            startActivity(intent);
         }
     }
 
