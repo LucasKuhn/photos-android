@@ -1,6 +1,7 @@
 package com.example.photos.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.photos.R;
+import com.example.photos.activity.VisualizePhotoActivity;
 import com.example.photos.model.Photo;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
 
     private final List<Photo> elements;
-    Context context;
+    private Context context;
 
     public PhotosAdapter(List<Photo> elements, Context context) {
         this.elements = elements;
@@ -67,7 +69,9 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
         }
 
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), "Você clicou aqui", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, VisualizePhotoActivity.class);
+            intent.putExtra("photoId", elements.get(getLayoutPosition()).getId());
+            context.startActivity(intent);
         }
 
     }
