@@ -10,7 +10,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPhotos"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="20dp">
@@ -18,13 +19,18 @@
 
     <Button
         android:id="@+id/btnTakePhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvPhotos"
         android:text="Tirar Foto"
-        android:onClick="takePhoto">
+        android:textAllCaps="false"
+        android:background="@drawable/button"
+        android:textColor="#FFF"
+        android:onClick="takePhoto"
+        android:drawableLeft="@drawable/ic_photo_camera_white_24dp"
+        android:padding="10dp">
     </Button>
 
 
