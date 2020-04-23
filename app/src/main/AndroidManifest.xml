@@ -15,8 +15,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.VisualizePhotoActivity" android:parentActivityName=".activity.MainActivity" android:label="Visualizar Foto"/>
-        <activity android:name=".activity.NewPhotoActivity" android:label="Nova Foto" />
+        <activity
+            android:name=".activity.UpdatePhotoActivity"
+            android:label="Editar Foto"
+            android:parentActivityName=".activity.VisualizePhotoActivity" />
+        <activity
+            android:name=".activity.VisualizePhotoActivity"
+            android:label="Visualizar Foto"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.NewPhotoActivity"
+            android:label="Nova Foto" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

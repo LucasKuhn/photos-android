@@ -7,19 +7,23 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/newPhotoImageView"
+        android:id="@+id/updatePhotoImageView"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="409dp"
+        android:id="@+id/textInputTitle"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="0.8"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/newPhotoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/updatePhotoImageView"
+        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
+        app:layout_constraintEnd_toEndOf="@id/updatePhotoImageView"
         tools:layout_editor_absoluteX="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -30,10 +34,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
+        android:id="@+id/textInputDescription"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="0.8"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputTitle"
+        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
+        app:layout_constraintEnd_toEndOf="@id/updatePhotoImageView"
         tools:layout_editor_absoluteX="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textInputDescription"
+        android:onClick="handleSavePhoto"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

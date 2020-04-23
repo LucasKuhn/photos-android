@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/updatePhotoImageView"
+        android:id="@+id/visualizePhotoImageView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="15dp"
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:text="Título"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
-        app:layout_constraintTop_toBottomOf="@id/updatePhotoImageView"/>
+        app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
+        app:layout_constraintTop_toBottomOf="@id/visualizePhotoImageView"/>
 
     <TextView
         android:id="@+id/txtTitle"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Aqui vai o título"
-        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
+        app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_marginTop="20dp"
         android:text="Descrição"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
+        app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Aqui vai a Descrição"
-        app:layout_constraintStart_toStartOf="@id/updatePhotoImageView"
+        app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/tvDescription" />
 
     <LinearLayout
@@ -66,14 +66,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Editar"/>
+            android:text="Editar"
+            android:onClick="handleUpdatePhotoActivity"/>
 
         <Button
             android:id="@+id/buttonDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Excluir" />
+            android:text="Excluir"
+            android:onClick="handleDeletePhoto"/>
 
     </LinearLayout>
 
