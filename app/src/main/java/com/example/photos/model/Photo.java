@@ -13,6 +13,9 @@ public class Photo {
         this.title = title;
         this.description = description;
         this.url = url;
+        if ( isNullOrEmpty(this.title) ) {
+            this.title = this.url;
+        }
     }
 
     public int getId() {
@@ -46,4 +49,11 @@ public class Photo {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public static boolean isNullOrEmpty(String str) {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
+
 }
