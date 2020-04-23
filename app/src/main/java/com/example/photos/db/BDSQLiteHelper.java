@@ -83,7 +83,7 @@ public class BDSQLiteHelper extends SQLiteOpenHelper {
 
     public ArrayList<Photo> getAllPhotos() {
         ArrayList<Photo> photoList = new ArrayList<Photo>();
-        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + ID;
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + ID + " DESC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
