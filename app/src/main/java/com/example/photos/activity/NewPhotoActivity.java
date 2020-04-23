@@ -38,7 +38,7 @@ public class NewPhotoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Photo photo = new Photo(title.getText().toString(),description.getText().toString(), photoURL);
                 int imageId = database.addPhoto(photo);
-                Toast.makeText(getApplicationContext() , "Photo added with id " + imageId , Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext() , "Foto salva com sucesso!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(NewPhotoActivity.this, MainActivity.class);
                 startActivity(intent);
             }

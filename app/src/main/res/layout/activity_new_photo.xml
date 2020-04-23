@@ -17,8 +17,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="0.8"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/newPhotoImageView"
+        app:layout_constraintEnd_toEndOf="@id/newPhotoImageView"
         app:layout_constraintTop_toBottomOf="@+id/newPhotoImageView"
         tools:layout_editor_absoluteX="1dp">
 
@@ -26,13 +29,18 @@
             android:id="@+id/inputTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título " />
+            android:hint="Título"
+            android:inputType="textCapWords"
+            android:textColor="@color/secondaryTextColor"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="0.8"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/newPhotoImageView"
+        app:layout_constraintEnd_toEndOf="@id/newPhotoImageView"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         tools:layout_editor_absoluteX="1dp">
 
@@ -40,14 +48,20 @@
             android:id="@+id/inputDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição" />
+            android:hint="Descrição"
+            android:inputType="textCapSentences"
+            android:textColor="@color/secondaryTextColor"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Salvar"
+        android:textAllCaps="false"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/buttonBorderColor"
+        android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

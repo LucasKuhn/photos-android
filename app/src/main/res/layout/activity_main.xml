@@ -11,7 +11,7 @@
         android:id="@+id/rvPhotos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHeight_percent="0.85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="20dp">
