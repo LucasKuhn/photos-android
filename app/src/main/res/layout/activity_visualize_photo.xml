@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Título"
         android:textStyle="bold"
+        android:textColor="@color/secondaryTextColor"
         app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/visualizePhotoImageView"/>
 
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Aqui vai o título"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
 
@@ -41,6 +43,7 @@
         android:layout_marginTop="20dp"
         android:text="Descrição"
         android:textStyle="bold"
+        android:textColor="@color/secondaryTextColor"
         app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
@@ -49,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:textColor="@color/primaryTextColor"
         android:text="Aqui vai a Descrição"
         app:layout_constraintStart_toStartOf="@id/visualizePhotoImageView"
         app:layout_constraintTop_toBottomOf="@id/tvDescription" />
@@ -67,6 +71,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="Editar"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:textColor="#FFF"
             android:onClick="handleUpdatePhotoActivity"/>
 
         <Button
@@ -75,6 +82,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Excluir"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/deleteColor"
+            android:textColor="#FFF"
             android:onClick="handleDeletePhoto"/>
 
     </LinearLayout>
