@@ -18,6 +18,8 @@ import com.example.photos.R;
 import com.example.photos.db.BDSQLiteHelper;
 import com.example.photos.model.Photo;
 
+import java.io.File;
+
 public class VisualizePhotoActivity extends AppCompatActivity {
 
     private BDSQLiteHelper database;
@@ -64,6 +66,8 @@ public class VisualizePhotoActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int returnedId = database.deletePhoto(photo);
+                File file = new File(photo.getUrl());
+                boolean deleted = file.delete();
                 Toast.makeText(getApplicationContext(), "Foto excluída com sucesso!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(VisualizePhotoActivity.this,MainActivity.class);
                 startActivity(intent);
